@@ -77,3 +77,11 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+# Movies
+
+## Dev
+1. Clone the Project
+2. Install npm packages `npm install`
+3. Clone the .env.template to .env and setup the env variables.
+4. Run the project `npm run android` or ` IOS: `npm run start:ios` and setup the configurations.
