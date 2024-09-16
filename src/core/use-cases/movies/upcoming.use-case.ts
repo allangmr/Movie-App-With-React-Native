@@ -3,9 +3,18 @@ import { GeneralMoviesResponse } from "../../../infraestructure/interfaces/movie
 import { MovieMapper } from "../../../infraestructure/mapers/movie.mapper";
 import type { Movie } from "../../entities/movie.entity";
 
-export const moviesUpcomingUseCase = async (fetcher: HttpAdapter):Promise<Movie[]> => {
+interface Options {
+    page?: number;
+    limit?: number;
+}
+
+export const moviesUpcomingUseCase = async (fetcher: HttpAdapter, options?: Options):Promise<Movie[]> => {
     try {
-        const upcoming = await fetcher.get<GeneralMoviesResponse>('/upcoming');
+        const upcoming = await fetcher.get<GeneralMoviesResponse>('/upcoming',  {
+            params: {
+                page: options?.page || 1,
+            },
+        });
         return upcoming.results.map((result) => MovieMapper.fromMovieDBResulltToEntity(result));
 
     } catch(error) {
