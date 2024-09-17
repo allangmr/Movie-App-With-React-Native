@@ -14,14 +14,22 @@ export const MovieDetails = ({movie, cast}: Props) => {
   return (
     <>
         <View style={{marginHorizontal: 20, marginTop: 10}}>
-            <View style={{flexDirection: "row"}}>
-                <Text>{movie.rating}</Text>
-                <Text style={{marginLeft: 5}}>- {movie.genres.join(", ")}</Text>
-            </View>
-            <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>Description</Text>
-            <Text style={{fontSize: 16, marginTop: 10, marginBottom: 20}}>{movie.description}</Text>
+                {movie.rating > 0 && (
+                    <View style={{flexDirection: "row"}}>
+                        <Text>{movie.rating}</Text>
+                        <Text style={{marginLeft: 5}}>- {movie.genres.join(", ")}</Text>
+                    </View>
+                )}
+                {
+                    movie.description.length > 20 && (
+                        <>
+                            <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>Description</Text>
+                            <Text style={{fontSize: 16, marginTop: 10, marginBottom: 20}}>{movie.description}</Text>
+                        </>
+                    )
+                }
             <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>Budget</Text>
-            <Text style={{fontSize: 16, marginTop: 10, marginBottom: 20}}>{formatCurrency(movie.budget)}</Text>
+            <Text style={{fontSize: 16, marginTop: 10, marginBottom: 20}}>{movie.budget > 0 ? formatCurrency(movie.budget) : 'Budget information not available.'}</Text>
         </View>
         {/* Casting */}
         <View style={{marginTop: 10, marginBottom: 30}}>
